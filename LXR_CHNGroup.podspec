@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LXR_CHNGroup'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'LXR_CHNGroup中文分组'
 
   s.description      = 'LXR_CHNGroup中文分组,一句代码搞定'

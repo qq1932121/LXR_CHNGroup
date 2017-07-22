@@ -25,7 +25,7 @@
 #ifndef LXR_CHNGroup_h
 #define LXR_CHNGroup_h
 
-#import "LXRContactModel.h"
+#import "LXRSingle.h"
 #import "NSString+pinYin.h"
 #import "LXR_CHNGroupManager.h"
 
