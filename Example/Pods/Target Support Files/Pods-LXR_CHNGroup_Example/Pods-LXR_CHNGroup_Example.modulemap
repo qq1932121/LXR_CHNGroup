@@ -1,0 +1,6 @@
+framework module Pods_LXR_CHNGroup_Example {
+  umbrella header "Pods-LXR_CHNGroup_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

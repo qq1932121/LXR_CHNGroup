@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		046E0C391F23F039004C1179 /* LXRContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E0C381F23F039004C1179 /* LXRContactModel.m */; };
 		203E684E1DA31E44BB4FF44D /* Pods_LXR_CHNGroup_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5F5F9C2FF25C41907BF63F /* Pods_LXR_CHNGroup_Tests.framework */; };
 		230EEE81F6CAED097C311C1F /* Pods_LXR_CHNGroup_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3EC937C2FF4254E253FE72 /* Pods_LXR_CHNGroup_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -37,8 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F7493640FBFE2038C2BBABD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		32A1B748B29A18EA5FA4A995 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		046E0C371F23F039004C1179 /* LXRContactModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXRContactModel.h; sourceTree = "<group>"; };
+		046E0C381F23F039004C1179 /* LXRContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXRContactModel.m; sourceTree = "<group>"; };
+		2F7493640FBFE2038C2BBABD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		32A1B748B29A18EA5FA4A995 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* LXR_CHNGroup_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXR_CHNGroup_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,7 +66,7 @@
 		A6618572135DE8ACB4B18837 /* Pods-LXR_CHNGroup_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXR_CHNGroup_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LXR_CHNGroup_Tests/Pods-LXR_CHNGroup_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CB5F5F9C2FF25C41907BF63F /* Pods_LXR_CHNGroup_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXR_CHNGroup_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC31397B73BF812C6423A4C5 /* Pods-LXR_CHNGroup_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXR_CHNGroup_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LXR_CHNGroup_Tests/Pods-LXR_CHNGroup_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		DE61DFF3752044BD3DCF53B5 /* LXR_CHNGroup.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = LXR_CHNGroup.podspec; path = ../LXR_CHNGroup.podspec; sourceTree = "<group>"; };
+		DE61DFF3752044BD3DCF53B5 /* LXR_CHNGroup.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LXR_CHNGroup.podspec; path = ../LXR_CHNGroup.podspec; sourceTree = "<group>"; };
 		E3D0C8CC058D894C26554B5C /* Pods-LXR_CHNGroup_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXR_CHNGroup_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LXR_CHNGroup_Example/Pods-LXR_CHNGroup_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E57687C8C9852FBB81E827D6 /* Pods-LXR_CHNGroup_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXR_CHNGroup_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-LXR_CHNGroup_Example/Pods-LXR_CHNGroup_Example.release.xcconfig"; sourceTree = "<group>"; };
 		ED3EC937C2FF4254E253FE72 /* Pods_LXR_CHNGroup_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXR_CHNGroup_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +140,8 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* LXRViewController.h */,
 				6003F5A6195388D20070C39A /* LXRViewController.m */,
+				046E0C371F23F039004C1179 /* LXRContactModel.h */,
+				046E0C381F23F039004C1179 /* LXRContactModel.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -397,6 +402,7 @@
 				6003F59E195388D20070C39A /* LXRAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* LXRViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				046E0C391F23F039004C1179 /* LXRContactModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

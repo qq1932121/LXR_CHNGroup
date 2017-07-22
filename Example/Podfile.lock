@@ -1,0 +1,16 @@
+PODS:
+  - LXR_CHNGroup (0.1.0)
+
+DEPENDENCIES:
+  - LXR_CHNGroup (from `../`)
+
+EXTERNAL SOURCES:
+  LXR_CHNGroup:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LXR_CHNGroup: ee57bb9ccb09d06f2e46ea44d7b10a97508a5280
+
+PODFILE CHECKSUM: 376e58bf0c7da88fc26c3cee25216fc8ddce4cdd
+
+COCOAPODS: 1.2.1

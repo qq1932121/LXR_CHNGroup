@@ -1,0 +1,6 @@
+framework module LXR_CHNGroup {
+  umbrella header "LXR_CHNGroup-umbrella.h"
+
+  export *
+  module * { export * }
+}

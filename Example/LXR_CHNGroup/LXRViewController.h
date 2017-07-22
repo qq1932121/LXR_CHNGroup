@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface LXRViewController : UIViewController
+@interface LXRViewController : UITableViewController
 
 @end
