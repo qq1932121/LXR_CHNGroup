@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'LXR_CHNGroup_Example' do
+  pod 'LXR_CHNGroup', :path => '../'
+
+  target 'LXR_CHNGroup_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
