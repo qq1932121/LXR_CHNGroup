@@ -1,9 +1,9 @@
 //
 
 #import "LXRViewController.h"
+#import "LXRContactModel.h"
+
 #import "../../LXR_CHNGroup/Classes/LXR_CHNGroup.h"
-
-
 @interface LXRViewController ()
 
 @property (nonatomic) NSMutableArray *sectionTitles;
@@ -20,19 +20,23 @@
     self.title = @"通讯录";
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.tableView.rowHeight = 56;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-
-
-    [[LXR_CHNGroupManager sharedContactManager] contactManagerWithContactModels:self.contactSource  SortKey:@"userName" CompletionGroupBlock:^(NSMutableArray *titles, NSMutableArray *groupArray) {
+     
+    /// 方法调用
+    [[LXR_CHNGroupManager sharedContactManager] contactManagerWithContactModels:self.contactSource SortKey:@"userName" CompletionGroupBlock:^(NSMutableArray *titles, NSMutableArray *groupArray) {
+        
+        // [A-Z]数组
+        self.sectionTitles = titles;
+        // 模型数组
+        self.dataArray = groupArray;
+        // 刷新
+        [self.tableView reloadData];
+        
+    } Failure:^(NSError *error) {
+        NSLog(@"%@",error.description);
+    }];
     
-            self.sectionTitles = titles;
-            self.dataArray = groupArray;
-            [self.tableView reloadData];
-    
-        } Failure:^(NSError *error) {
-                NSLog(@"%@",error.description);
-            }];
+     
+     
 
 }
 
