@@ -22,7 +22,7 @@ pod "LXR_CHNGroup"
 
 ## Author
 
-1932121@qq.com, 1932121@qq.com
+LXR, 1932121@qq.com
 
 ## License
 
