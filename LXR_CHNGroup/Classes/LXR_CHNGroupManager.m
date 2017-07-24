@@ -12,8 +12,6 @@
 
 @interface LXR_CHNGroupManager()
 
-@property(nonatomic ,copy)CompletionGroupBlock groupBlock;
-
 /**
  组头数组(A-Z)
  */
@@ -45,14 +43,17 @@ LXRSingletonM(ContactManager)
  */
 -(void)contactManagerWithContactModels:(NSArray*)contactModels SortKey:(NSString *)sortKey CompletionGroupBlock:(CompletionGroupBlock)groupBlock Failure:(FailureBlock)failure{
     
-    NSError* error = nil;
+    NSError* error  = nil;
+    _sourceArray    = nil;
+    _sectionTitles  = nil;
+    _groupArray     = nil;
+    
     error = [self checking:@[contactModels,sortKey]];
     if (error) {
         failure(error);
         return;
     }
     self.sourceArray = contactModels;
-    _groupBlock = groupBlock;
     
     // 根据sortKey排序分组
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:YES];
@@ -62,12 +63,12 @@ LXRSingletonM(ContactManager)
     NSInteger highSection = [self.sectionTitles count];
     
     
-    NSMutableArray<NSMutableArray *> *sortedArray = [NSMutableArray arrayWithCapacity:highSection];
+    self.groupArray = [NSMutableArray arrayWithCapacity:highSection];
     for (int i = 0; i < highSection; i++) {
         NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:1];
-        [sortedArray addObject:sectionArray];
+        [self.groupArray addObject:sectionArray];
     }
-    self.groupArray = sortedArray;
+    //self.groupArray = sortedArray;
     
     // 按首字母分组
     for (id model in self.sourceArray) {
@@ -101,15 +102,15 @@ LXRSingletonM(ContactManager)
     }
     
     //每个section内的数组排序
-    for (int i = 0; i < [sortedArray count]; i++) {
-        [sortedArray[i] sortUsingDescriptors:@[descriptor]];
+    for (int i = 0; i < [self.groupArray count]; i++) {
+        [self.groupArray[i] sortUsingDescriptors:@[descriptor]];
     }
     
     //去掉空的section
-    for (NSInteger i = [sortedArray count] - 1; i >= 0; i--) {
-        NSArray *array = [sortedArray objectAtIndex:i];
+    for (NSInteger i = [self.groupArray count] - 1; i >= 0; i--) {
+        NSArray *array = [self.groupArray objectAtIndex:i];
         if ([array count] == 0) {
-            [sortedArray removeObjectAtIndex:i];
+            [self.groupArray removeObjectAtIndex:i];
             [self.sectionTitles removeObjectAtIndex:i];
         }
     }
@@ -137,11 +138,6 @@ LXRSingletonM(ContactManager)
         }
     }
     return nil;
-}
-
-+ (void)setMj_error:(NSError *)error
-{
-    objc_setAssociatedObject(self, '\0', error, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 #pragma mark - 懒加载
