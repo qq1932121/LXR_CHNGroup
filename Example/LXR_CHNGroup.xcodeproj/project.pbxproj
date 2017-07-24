@@ -255,6 +255,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "1932121@qq.com";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = CGR6FPJ37Q;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -530,6 +533,7 @@
 			baseConfigurationReference = E3D0C8CC058D894C26554B5C /* Pods-LXR_CHNGroup_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CGR6FPJ37Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXR_CHNGroup/LXR_CHNGroup-Prefix.pch";
 				INFOPLIST_FILE = "LXR_CHNGroup/LXR_CHNGroup-Info.plist";
@@ -545,6 +549,7 @@
 			baseConfigurationReference = E57687C8C9852FBB81E827D6 /* Pods-LXR_CHNGroup_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CGR6FPJ37Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXR_CHNGroup/LXR_CHNGroup-Prefix.pch";
 				INFOPLIST_FILE = "LXR_CHNGroup/LXR_CHNGroup-Info.plist";
