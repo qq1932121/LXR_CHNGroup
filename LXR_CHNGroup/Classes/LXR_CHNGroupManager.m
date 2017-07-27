@@ -43,7 +43,7 @@ LXRSingletonM(ContactManager)
  */
 -(void)contactManagerWithContactModels:(NSArray*)contactModels SortKey:(NSString *)sortKey CompletionGroupBlock:(CompletionGroupBlock)groupBlock Failure:(FailureBlock)failure{
     
-    NSError* error  = nil;
+    __block NSError* error  = nil;
     _sourceArray    = nil;
     _sectionTitles  = nil;
     _groupArray     = nil;
@@ -64,58 +64,75 @@ LXRSingletonM(ContactManager)
     
     
     self.groupArray = [NSMutableArray arrayWithCapacity:highSection];
-    for (int i = 0; i < highSection; i++) {
-        NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:1];
-        [self.groupArray addObject:sectionArray];
-    }
-    //self.groupArray = sortedArray;
     
-    // 按首字母分组
-    for (id model in self.sourceArray) {
-        // 名字
-        @try {
-            [model valueForKeyPath:sortKey];
-        } @catch (NSException *exception) {
-            error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:@{NSLocalizedFailureReasonErrorKey: @"SortKey找不多对应值"}];
-        } @finally {
-            if (error) {
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        //2.上传
+        dispatch_group_t group = dispatch_group_create();
+        
+        dispatch_group_enter(group);
+        for (int i = 0; i < highSection; i++) {
+            NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:1];
+            [self.groupArray addObject:sectionArray];
+        }
+        dispatch_group_leave(group);
+        
+        dispatch_group_enter(group);
+        // 按首字母分组
+        for (id model in self.sourceArray) {
+            // 名字
+            @try {
+                [model valueForKeyPath:sortKey];
+            } @catch (NSException *exception) {
+                error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:@{NSLocalizedFailureReasonErrorKey: @"SortKey找不多对应值"}];
+            } @finally {
+                if (error) {
+                    failure(error);
+                    return;
+                }
+            }
+            NSString* nameStr = [model valueForKeyPath:sortKey];
+            // 转拼音
+            NSString* fullPinYinStr = [NSString pinyinOfString:nameStr];
+            
+            // 获取第一个拼音
+            NSString *firstLetter = [NSString firstPinyinLetterOfString:fullPinYinStr];
+            
+            if (firstLetter == nil) {
+                error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:@{NSLocalizedFailureReasonErrorKey: @"SortKey对应值不能为空"}];
                 failure(error);
                 return;
             }
+            
+            NSInteger section = [indexCollation sectionForObject:firstLetter collationStringSelector:@selector(uppercaseString)];
+            
+            [self.groupArray[section] addObject:model];
         }
-        NSString* nameStr = [model valueForKeyPath:sortKey];
-        // 转拼音
-        NSString* fullPinYinStr = [NSString pinyinOfString:nameStr];
+        dispatch_group_leave(group);
         
-        // 获取第一个拼音
-        NSString *firstLetter = [NSString firstPinyinLetterOfString:fullPinYinStr];
-        
-        if (firstLetter == nil) {
-            error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:@{NSLocalizedFailureReasonErrorKey: @"SortKey对应值不能为空"}];
-            failure(error);
-            return;
+        dispatch_group_enter(group);
+        //每个section内的数组排序
+        for (int i = 0; i < [self.groupArray count]; i++) {
+            [self.groupArray[i] sortUsingDescriptors:@[descriptor]];
         }
+        dispatch_group_leave(group);
         
-        NSInteger section = [indexCollation sectionForObject:firstLetter collationStringSelector:@selector(uppercaseString)];
-        
-        [self.groupArray[section] addObject:model];
-    }
-    
-    //每个section内的数组排序
-    for (int i = 0; i < [self.groupArray count]; i++) {
-        [self.groupArray[i] sortUsingDescriptors:@[descriptor]];
-    }
-    
-    //去掉空的section
-    for (NSInteger i = [self.groupArray count] - 1; i >= 0; i--) {
-        NSArray *array = [self.groupArray objectAtIndex:i];
-        if ([array count] == 0) {
-            [self.groupArray removeObjectAtIndex:i];
-            [self.sectionTitles removeObjectAtIndex:i];
+        //去掉空的section
+        dispatch_group_enter(group);
+        for (NSInteger i = [self.groupArray count] - 1; i >= 0; i--) {
+            NSArray *array = [self.groupArray objectAtIndex:i];
+            if ([array count] == 0) {
+                [self.groupArray removeObjectAtIndex:i];
+                [self.sectionTitles removeObjectAtIndex:i];
+            }
         }
-    }
-    
-    groupBlock(self.sectionTitles,self.groupArray);
+        dispatch_group_leave(group);
+        
+        // 上传完成
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            groupBlock(self.sectionTitles,self.groupArray);
+        });
+    });
 }
 
 #pragma mark - 私有方法
@@ -123,11 +140,13 @@ LXRSingletonM(ContactManager)
 - (NSError *)checking:(NSArray *)array{
     NSError* error = nil;
     NSDictionary *userInfo = nil;
+    
     for (id objc in array) {
         if ([objc isKindOfClass:[NSArray class]]) {
             if (array || array.count > 0) {continue;}
             userInfo = @{NSLocalizedFailureReasonErrorKey: @"数组不能为空"};
             error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:userInfo];
+            
         }
         if ([objc isKindOfClass:[NSString class]]) {
             NSString* string = objc;
