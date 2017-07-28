@@ -65,19 +65,16 @@ LXRSingletonM(ContactManager)
     
     self.groupArray = [NSMutableArray arrayWithCapacity:highSection];
     
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        //2.上传
-        dispatch_group_t group = dispatch_group_create();
+    // 将耗时操作放到子线程
+    dispatch_queue_t queue = dispatch_queue_create("sortKey", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(queue, ^{
         
-        dispatch_group_enter(group);
         for (int i = 0; i < highSection; i++) {
             NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:1];
             [self.groupArray addObject:sectionArray];
         }
-        dispatch_group_leave(group);
+        //self.groupArray = sortedArray;
         
-        dispatch_group_enter(group);
         // 按首字母分组
         for (id model in self.sourceArray) {
             // 名字
@@ -108,17 +105,13 @@ LXRSingletonM(ContactManager)
             
             [self.groupArray[section] addObject:model];
         }
-        dispatch_group_leave(group);
         
-        dispatch_group_enter(group);
         //每个section内的数组排序
         for (int i = 0; i < [self.groupArray count]; i++) {
             [self.groupArray[i] sortUsingDescriptors:@[descriptor]];
         }
-        dispatch_group_leave(group);
         
         //去掉空的section
-        dispatch_group_enter(group);
         for (NSInteger i = [self.groupArray count] - 1; i >= 0; i--) {
             NSArray *array = [self.groupArray objectAtIndex:i];
             if ([array count] == 0) {
@@ -126,10 +119,8 @@ LXRSingletonM(ContactManager)
                 [self.sectionTitles removeObjectAtIndex:i];
             }
         }
-        dispatch_group_leave(group);
         
-        // 上传完成
-        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             groupBlock(self.sectionTitles,self.groupArray);
         });
     });
@@ -140,13 +131,11 @@ LXRSingletonM(ContactManager)
 - (NSError *)checking:(NSArray *)array{
     NSError* error = nil;
     NSDictionary *userInfo = nil;
-    
     for (id objc in array) {
         if ([objc isKindOfClass:[NSArray class]]) {
             if (array || array.count > 0) {continue;}
             userInfo = @{NSLocalizedFailureReasonErrorKey: @"数组不能为空"};
             error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:userInfo];
-            
         }
         if ([objc isKindOfClass:[NSString class]]) {
             NSString* string = objc;
