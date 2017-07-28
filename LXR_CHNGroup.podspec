@@ -14,9 +14,9 @@ Pod::Spec.new do |s|
   s.frameworks = 'UIKit'
   s.ios.deployment_target = '8.0'
   s.source_files = 'LXR_CHNGroup/Classes/**/*'
-  s.public_header_files = 'Pod/Classes/**/LXR_CHNGroup.h'
 
 
+  # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.resource_bundles = {
   #   'LXR_CHNGroup' => ['LXR_CHNGroup/Assets/*.png']
   # }
