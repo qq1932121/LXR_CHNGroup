@@ -12,10 +12,10 @@
 		046E0C321F23EEF0004C1179 /* LXR_CHNGroupManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E0C301F23EEF0004C1179 /* LXR_CHNGroupManager.m */; };
 		046E0C351F23EF07004C1179 /* NSString+pinYin.h in Headers */ = {isa = PBXBuildFile; fileRef = 046E0C331F23EF07004C1179 /* NSString+pinYin.h */; };
 		046E0C361F23EF07004C1179 /* NSString+pinYin.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E0C341F23EF07004C1179 /* NSString+pinYin.m */; };
-		04C47F631F2CDB6F00BD5B2D /* AddressBookManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 04C47F5F1F2CDB6F00BD5B2D /* AddressBookManager.h */; };
-		04C47F641F2CDB6F00BD5B2D /* AddressBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C47F601F2CDB6F00BD5B2D /* AddressBookManager.m */; };
 		04C47F651F2CDB6F00BD5B2D /* PersonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 04C47F611F2CDB6F00BD5B2D /* PersonModel.h */; };
 		04C47F661F2CDB6F00BD5B2D /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C47F621F2CDB6F00BD5B2D /* PersonModel.m */; };
+		04C47F761F2D0E1900BD5B2D /* AddressBookManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 04C47F741F2D0E1900BD5B2D /* AddressBookManager.h */; };
+		04C47F771F2D0E1900BD5B2D /* AddressBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C47F751F2D0E1900BD5B2D /* AddressBookManager.m */; };
 		3E610C1155C254E9B23532FDE496EAA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		639FF767A6041E58A4BA7788BA14B654 /* Pods-LXR_CHNGroup_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 992BD4C4D87C4F5DFB1AE0254F5EBFD4 /* Pods-LXR_CHNGroup_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6FDF8F43FE84FF3E6B8E100B26C7745D /* Pods-LXR_CHNGroup_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 81B640EA7348FE54D67140865DDB7F4C /* Pods-LXR_CHNGroup_Example-dummy.m */; };
@@ -45,10 +45,10 @@
 		046E0C301F23EEF0004C1179 /* LXR_CHNGroupManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXR_CHNGroupManager.m; sourceTree = "<group>"; };
 		046E0C331F23EF07004C1179 /* NSString+pinYin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+pinYin.h"; sourceTree = "<group>"; };
 		046E0C341F23EF07004C1179 /* NSString+pinYin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+pinYin.m"; sourceTree = "<group>"; };
-		04C47F5F1F2CDB6F00BD5B2D /* AddressBookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookManager.h; sourceTree = "<group>"; };
-		04C47F601F2CDB6F00BD5B2D /* AddressBookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookManager.m; sourceTree = "<group>"; };
 		04C47F611F2CDB6F00BD5B2D /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
 		04C47F621F2CDB6F00BD5B2D /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
+		04C47F741F2D0E1900BD5B2D /* AddressBookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookManager.h; sourceTree = "<group>"; };
+		04C47F751F2D0E1900BD5B2D /* AddressBookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookManager.m; sourceTree = "<group>"; };
 		0621C6B2C35A525D8FD4EFA013FEFF99 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		069D70B926876F1E943C0F1C94089857 /* Pods-LXR_CHNGroup_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LXR_CHNGroup_Tests-resources.sh"; sourceTree = "<group>"; };
 		12BA184306AB34BD8A85B5B7BE1753EE /* LXR_CHNGroup-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LXR_CHNGroup-dummy.m"; sourceTree = "<group>"; };
@@ -216,8 +216,8 @@
 				046E0C2C1F23EE9F004C1179 /* LXRSingle.h */,
 				046E0C2F1F23EEF0004C1179 /* LXR_CHNGroupManager.h */,
 				046E0C301F23EEF0004C1179 /* LXR_CHNGroupManager.m */,
-				04C47F5F1F2CDB6F00BD5B2D /* AddressBookManager.h */,
-				04C47F601F2CDB6F00BD5B2D /* AddressBookManager.m */,
+				04C47F741F2D0E1900BD5B2D /* AddressBookManager.h */,
+				04C47F751F2D0E1900BD5B2D /* AddressBookManager.m */,
 				04C47F611F2CDB6F00BD5B2D /* PersonModel.h */,
 				04C47F621F2CDB6F00BD5B2D /* PersonModel.m */,
 				046E0C331F23EF07004C1179 /* NSString+pinYin.h */,
@@ -271,8 +271,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C47F761F2D0E1900BD5B2D /* AddressBookManager.h in Headers */,
 				CD1B04F185BA2A01F06EC942552FA342 /* LXR_CHNGroup-umbrella.h in Headers */,
-				04C47F631F2CDB6F00BD5B2D /* AddressBookManager.h in Headers */,
 				046E0C351F23EF07004C1179 /* NSString+pinYin.h in Headers */,
 				04C47F651F2CDB6F00BD5B2D /* PersonModel.h in Headers */,
 				046E0C2D1F23EE9F004C1179 /* LXRSingle.h in Headers */,
@@ -385,10 +385,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C47F661F2CDB6F00BD5B2D /* PersonModel.m in Sources */,
+				04C47F771F2D0E1900BD5B2D /* AddressBookManager.m in Sources */,
 				046E0C361F23EF07004C1179 /* NSString+pinYin.m in Sources */,
 				046E0C321F23EEF0004C1179 /* LXR_CHNGroupManager.m in Sources */,
 				F78D8E02B717ABD737C7AF811BAA9315 /* LXR_CHNGroup-dummy.m in Sources */,
-				04C47F641F2CDB6F00BD5B2D /* AddressBookManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
