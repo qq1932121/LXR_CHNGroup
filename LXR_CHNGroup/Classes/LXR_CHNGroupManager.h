@@ -35,8 +35,8 @@ LXRSingletonH(ContactManager)
 
 
 /**
- 中文分组
- 数组模型传入什么模型就返回什么模型
+ 中文分组(数组模型传入什么模型就返回什么模型)
+ 
  @param contactModels   数组模型(处理前)
  @param sortKey         排序比较
  @param groupBlock      完成回调(分组数组和模型数组)

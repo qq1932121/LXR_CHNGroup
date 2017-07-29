@@ -12,7 +12,7 @@
 #import <Contacts/Contacts.h>
 #endif
 #import <AddressBook/AddressBook.h>
-#import "../NSString+pinYin.h"
+#import "NSString+pinYin.h"
 
 #define IOS9_LATER ([[UIDevice currentDevice] systemVersion].floatValue > 9.0 ? YES : NO )
 
@@ -24,15 +24,8 @@
 @end
 
 @implementation AddressBookManager
+LXRSingletonM(Manager)
 
-+ (instancetype)sharedInstance{
-    static AddressBookManager *instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [AddressBookManager new];
-    });
-    return instance;
-}
 
 - (void)initialize
 {

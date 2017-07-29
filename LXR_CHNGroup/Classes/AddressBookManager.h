@@ -23,6 +23,7 @@
  *********************************************************************************
  */
 #import <Foundation/Foundation.h>
+#import "LXRSingle.h"
 @class PersonModel;
 
 /** 一个联系人的相关信息*/
@@ -45,8 +46,8 @@ typedef void(^AddressBookDictBlock)(NSDictionary<NSString *,NSArray *> *addressB
 
 
 @interface AddressBookManager : NSObject
+LXRSingletonH(Manager)
 
-+ (instancetype)sharedInstance;
 
 /** 请求用户是否授权APP访问通讯录的权限 */
 - (void)requestAuthorizationWithSuccessBlock:(void (^)(BOOL isSuccess))success;
@@ -65,5 +66,8 @@ typedef void(^AddressBookDictBlock)(NSDictionary<NSString *,NSArray *> *addressB
  *  @param failure         授权失败的Block
  */
 - (void)getOrderAddressBook:(AddressBookDictBlock)addressBookInfo authorizationFailure:(AuthorizationFailure)failure;
+
+
+
 
 @end

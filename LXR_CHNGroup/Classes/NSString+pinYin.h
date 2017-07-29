@@ -32,4 +32,12 @@
 //获取拼音
 + (NSString *)pinyinOfString:(NSString *)aString;
 
+//获取字符串首个字大写字母(传入汉字字符串, 返回大写拼音首字母)
++ (NSString *)getFirstLetterFromString:(NSString *)aString;
+
+//多音字处理
++ (NSString *)polyphoneStringHandle:(NSString *)aString pinyinString:(NSString *)pinyinString;
+
+//过滤指定字符串(可自定义添加自己过滤的字符串)
++ (NSString *)removeSpecialSubString: (NSString *)string;
 @end

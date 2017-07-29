@@ -62,9 +62,8 @@ LXRSingletonM(ContactManager)
     [self.sectionTitles addObjectsFromArray:[indexCollation sectionTitles]];
     NSInteger highSection = [self.sectionTitles count];
     
-    
     self.groupArray = [NSMutableArray arrayWithCapacity:highSection];
-    
+
     // 将耗时操作放到子线程
     dispatch_queue_t queue = dispatch_queue_create("sortKey", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
@@ -73,7 +72,6 @@ LXRSingletonM(ContactManager)
             NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:1];
             [self.groupArray addObject:sectionArray];
         }
-        //self.groupArray = sortedArray;
         
         // 按首字母分组
         for (id model in self.sourceArray) {
@@ -91,7 +89,6 @@ LXRSingletonM(ContactManager)
             NSString* nameStr = [model valueForKeyPath:sortKey];
             // 转拼音
             NSString* fullPinYinStr = [NSString pinyinOfString:nameStr];
-            
             // 获取第一个拼音
             NSString *firstLetter = [NSString firstPinyinLetterOfString:fullPinYinStr];
             

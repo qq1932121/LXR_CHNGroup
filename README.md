@@ -19,9 +19,10 @@
 如果 LXR_CHNGroupKit 好用,希望您能Star支持,你的 ⭐️ 是我持续更新的动力!
 
 ```
+## 主要功能分为两个功能类
 
-
-## Example<示例>
+- `LXR_CHNGroupManager`根据模型数组和根据Key排序
+    - 示例代码 
 
 ```objc
 /// 方法调用
@@ -29,22 +30,61 @@
 /// SortKey       : 排序的Key
 [[LXR_CHNGroupManager sharedContactManager] contactManagerWithContactModels:self.contactSource SortKey:@"userName" CompletionGroupBlock:^(NSMutableArray *titles, NSMutableArray *groupArray) {
 
-// [A-Z]数组
-self.sectionTitles = titles;
-// 模型数组
-self.dataArray = groupArray;
-// 刷新
-[self.tableView reloadData];
+    // [A-Z]数组
+    self.sectionTitles = titles;
+    // 模型数组
+    self.dataArray = groupArray;
+    // 刷新
+    [self.tableView reloadData];
 
 } Failure:^(NSError *error) {
 NSLog(@"%@",error.description);
 }];
 ```
+- `AddressBookManager`调用系统通讯录就行分组 
+    - 示例代码(获取原始顺序排列的所有联系人)
 
-## Requirements
+```objc
+//1.获取通讯录权限
+[[AddressBookManager sharedManager] requestAuthorizationWithSuccessBlock:^(BOOL isSuccess) {
+    if (isSuccess) {
+    //2.获取通讯录
+    [[AddressBookManager sharedManager] getOriginalAddressBook:^(NSArray<PersonModel *> *addressBookArray) {
+        self.addressArray = addressBookArray;
+        [self.tableView reloadData];
+    } authorizationFailure:^{
+        //2 弹框
+        [self showAlert];
+    }];
+}
+}];
 
-## Installation
+```
+    - 示例代码(获取按A~Z顺序排列的所有联系人)
 
+```objc
+//1.获取通讯录权限
+[[AddressBookManager sharedManager] requestAuthorizationWithSuccessBlock:^(BOOL isSuccess) {
+    if (isSuccess) {
+        //2.获取分组通讯录
+        [[AddressBookManager sharedManager] getOrderAddressBook:^(NSDictionary<NSString *,NSArray *> *addressBookDict, NSArray *nameKeys) {
+
+        self.addressBookDict = addressBookDict;
+        self.titles = nameKeys;
+        [self.tableView reloadData];
+
+        } authorizationFailure:^{
+        // 失败操作处理...
+        }];
+    }else{
+    // 失败操作处理...
+    }
+}];
+```
+
+- 此功能参考PPGetAddressBook框架,十分感谢,从中学到很多知识
+
+## CocoaPods安装
 LXR_CHNGroup is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -52,7 +92,7 @@ it, simply add the following line to your Podfile:
 pod "LXR_CHNGroup"
 ```
 
-## Author<作者>
+## 作者
 
 LXR, 1932121@qq.com
 
