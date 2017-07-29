@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		046E0C391F23F039004C1179 /* LXRContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E0C381F23F039004C1179 /* LXRContactModel.m */; };
+		04C47F681F2CDE8900BD5B2D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C47F671F2CDE8900BD5B2D /* Launch Screen.storyboard */; };
+		04C47F6B1F2CF68600BD5B2D /* LXRAddressOriginalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C47F6A1F2CF68600BD5B2D /* LXRAddressOriginalController.m */; };
+		04C47F6E1F2CF6A600BD5B2D /* LXRAddressOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C47F6D1F2CF6A600BD5B2D /* LXRAddressOrderController.m */; };
+		04C47F711F2CF71000BD5B2D /* LXRGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C47F701F2CF71000BD5B2D /* LXRGroupController.m */; };
 		203E684E1DA31E44BB4FF44D /* Pods_LXR_CHNGroup_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB5F5F9C2FF25C41907BF63F /* Pods_LXR_CHNGroup_Tests.framework */; };
 		230EEE81F6CAED097C311C1F /* Pods_LXR_CHNGroup_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3EC937C2FF4254E253FE72 /* Pods_LXR_CHNGroup_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -23,7 +27,6 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,13 @@
 /* Begin PBXFileReference section */
 		046E0C371F23F039004C1179 /* LXRContactModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXRContactModel.h; sourceTree = "<group>"; };
 		046E0C381F23F039004C1179 /* LXRContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXRContactModel.m; sourceTree = "<group>"; };
+		04C47F671F2CDE8900BD5B2D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		04C47F691F2CF68600BD5B2D /* LXRAddressOriginalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXRAddressOriginalController.h; sourceTree = "<group>"; };
+		04C47F6A1F2CF68600BD5B2D /* LXRAddressOriginalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXRAddressOriginalController.m; sourceTree = "<group>"; };
+		04C47F6C1F2CF6A600BD5B2D /* LXRAddressOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXRAddressOrderController.h; sourceTree = "<group>"; };
+		04C47F6D1F2CF6A600BD5B2D /* LXRAddressOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXRAddressOrderController.m; sourceTree = "<group>"; };
+		04C47F6F1F2CF71000BD5B2D /* LXRGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXRGroupController.h; sourceTree = "<group>"; };
+		04C47F701F2CF71000BD5B2D /* LXRGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXRGroupController.m; sourceTree = "<group>"; };
 		2F7493640FBFE2038C2BBABD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		32A1B748B29A18EA5FA4A995 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* LXR_CHNGroup_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LXR_CHNGroup_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +71,6 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6618572135DE8ACB4B18837 /* Pods-LXR_CHNGroup_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXR_CHNGroup_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LXR_CHNGroup_Tests/Pods-LXR_CHNGroup_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CB5F5F9C2FF25C41907BF63F /* Pods_LXR_CHNGroup_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXR_CHNGroup_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,11 +147,17 @@
 				6003F59C195388D20070C39A /* LXRAppDelegate.h */,
 				6003F59D195388D20070C39A /* LXRAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				04C47F671F2CDE8900BD5B2D /* Launch Screen.storyboard */,
 				6003F5A5195388D20070C39A /* LXRViewController.h */,
 				6003F5A6195388D20070C39A /* LXRViewController.m */,
+				04C47F6F1F2CF71000BD5B2D /* LXRGroupController.h */,
+				04C47F701F2CF71000BD5B2D /* LXRGroupController.m */,
+				04C47F691F2CF68600BD5B2D /* LXRAddressOriginalController.h */,
+				04C47F6A1F2CF68600BD5B2D /* LXRAddressOriginalController.m */,
+				04C47F6C1F2CF6A600BD5B2D /* LXRAddressOrderController.h */,
+				04C47F6D1F2CF6A600BD5B2D /* LXRAddressOrderController.m */,
 				046E0C371F23F039004C1179 /* LXRContactModel.h */,
 				046E0C381F23F039004C1179 /* LXRContactModel.m */,
-				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -288,8 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				04C47F681F2CDE8900BD5B2D /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,7 +420,10 @@
 				6003F59E195388D20070C39A /* LXRAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* LXRViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				04C47F711F2CF71000BD5B2D /* LXRGroupController.m in Sources */,
 				046E0C391F23F039004C1179 /* LXRContactModel.m in Sources */,
+				04C47F6E1F2CF6A600BD5B2D /* LXRAddressOrderController.m in Sources */,
+				04C47F6B1F2CF68600BD5B2D /* LXRAddressOriginalController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,14 +460,6 @@
 				6003F5B9195388D20070C39A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71719F9E1E33DC2100824A3D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -537,6 +547,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXR_CHNGroup/LXR_CHNGroup-Prefix.pch";
 				INFOPLIST_FILE = "LXR_CHNGroup/LXR_CHNGroup-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -553,6 +564,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LXR_CHNGroup/LXR_CHNGroup-Prefix.pch";
 				INFOPLIST_FILE = "LXR_CHNGroup/LXR_CHNGroup-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
