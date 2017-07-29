@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LXR_CHNGroup'
-  s.version          = '0.2.1'
+  s.version          = '0.2.0'
   s.summary          = 'LXR_CHNGroup中文分组'
 
   s.description      = 'LXR_CHNGroup中文分组,一句代码搞定'
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.source_files = 'LXR_CHNGroup/Classes/**/*'
 
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.public_header_files = 'Pod/Classes/LXR_CHNGroup.h'
   # s.resource_bundles = {
   #   'LXR_CHNGroup' => ['LXR_CHNGroup/Assets/*.png']
   # }
