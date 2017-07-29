@@ -26,7 +26,6 @@
 #define LXR_CHNGroup_h
 
 #import "LXRSingle.h"
-#import "NSString+pinYin.h"
 #import "LXR_CHNGroupManager.h"
 #import "AddressBookManager.h"
 #import "PersonModel.h"

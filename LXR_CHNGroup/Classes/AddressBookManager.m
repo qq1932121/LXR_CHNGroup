@@ -8,12 +8,14 @@
 
 #import "AddressBookManager.h"
 #import "PersonModel.h"
+#import "NSString+pinYin.h"
+
 #ifdef __IPHONE_9_0
 #import <Contacts/Contacts.h>
 #endif
 #import <AddressBook/AddressBook.h>
 
-#import "NSString+pinYin.h"
+
 
 #define IOS9_LATER ([[UIDevice currentDevice] systemVersion].floatValue > 9.0 ? YES : NO )
 

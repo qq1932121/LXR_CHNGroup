@@ -8,7 +8,7 @@
 
 #import "LXR_CHNGroupManager.h"
 #import "NSString+pinYin.h"
-#import <objc/runtime.h>
+
 
 @interface LXR_CHNGroupManager()
 
