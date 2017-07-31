@@ -48,31 +48,31 @@ LXRSingletonM(ContactManager)
     _sectionTitles  = nil;
     _groupArray     = nil;
     
-    error = [self checking:@[contactModels,sortKey]];
-    if (error) {
-        failure(error);
-        return;
-    }
+    [self checking:@[contactModels,sortKey] Complation:^(NSError *error) {
+        if (error) {
+            failure(error);
+            return;
+        }
+    }];
+    
     self.sourceArray = contactModels;
     
-    // 根据sortKey排序分组
-    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:YES];
-    // 建立索引的核心, 返回27，是a－z和＃
-    UILocalizedIndexedCollation *indexCollation = [UILocalizedIndexedCollation currentCollation];
-    [self.sectionTitles addObjectsFromArray:[indexCollation sectionTitles]];
-    NSInteger highSection = [self.sectionTitles count];
-    
-    self.groupArray = [NSMutableArray arrayWithCapacity:highSection];
-
     // 将耗时操作放到子线程
     dispatch_queue_t queue = dispatch_queue_create("sortKey", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
+        // 根据sortKey排序分组
+        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:sortKey ascending:YES];
+        // 建立索引的核心, 返回27，是a－z和＃
+        UILocalizedIndexedCollation *indexCollation = [UILocalizedIndexedCollation currentCollation];
+        [self.sectionTitles addObjectsFromArray:[indexCollation sectionTitles]];
+        NSInteger highSection = [self.sectionTitles count];
         
-        for (int i = 0; i < highSection; i++) {
+        self.groupArray = [NSMutableArray arrayWithCapacity:highSection];
+        for (int i = 0; i < highSection; i++)
+        {
             NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:1];
             [self.groupArray addObject:sectionArray];
         }
-        
         // 按首字母分组
         for (id model in self.sourceArray) {
             // 名字
@@ -89,6 +89,7 @@ LXRSingletonM(ContactManager)
             NSString* nameStr = [model valueForKeyPath:sortKey];
             // 转拼音
             NSString* fullPinYinStr = [NSString pinyinOfString:nameStr];
+            
             // 获取第一个拼音
             NSString *firstLetter = [NSString firstPinyinLetterOfString:fullPinYinStr];
             
@@ -125,24 +126,38 @@ LXRSingletonM(ContactManager)
 
 #pragma mark - 私有方法
 /// 校验数组中(数组和字符串)
-- (NSError *)checking:(NSArray *)array{
-    NSError* error = nil;
-    NSDictionary *userInfo = nil;
-    for (id objc in array) {
-        if ([objc isKindOfClass:[NSArray class]]) {
-            if (array || array.count > 0) {continue;}
-            userInfo = @{NSLocalizedFailureReasonErrorKey: @"数组不能为空"};
-            error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:userInfo];
+- (void)checking:(NSArray *)array Complation: (void(^)(NSError * error))complation{
+    __block NSError* error = nil;
+    __block NSDictionary *userInfo = nil;
+    // 将耗时操作放到子线程
+    dispatch_queue_t queue = dispatch_queue_create("checking", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(queue, ^{
+        for (id objc in array) {
+            if ([objc isKindOfClass:[NSArray class]]) {
+                if (array || array.count > 0) {continue;}
+                userInfo = @{NSLocalizedFailureReasonErrorKey: @"数组不能为空"};
+                error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:userInfo];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    complation(error);
+                });
+            }
+            if ([objc isKindOfClass:[NSString class]]) {
+                NSString* string = objc;
+                if (string || string.length>0) {continue;}
+                userInfo = @{NSLocalizedFailureReasonErrorKey: @"Key不能为空"};
+                error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:userInfo];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    complation(error);
+                });
+            }
         }
-        if ([objc isKindOfClass:[NSString class]]) {
-            NSString* string = objc;
-            if (string || string.length>0) {continue;}
-            userInfo = @{NSLocalizedFailureReasonErrorKey: @"Key不能为空"};
-            error = [[NSError alloc] initWithDomain:@"错误信息" code:NSURLErrorUnknown userInfo:userInfo];
-            return error;
-        }
-    }
-    return nil;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            complation(nil);
+        });
+        
+        
+    });
 }
 
 #pragma mark - 懒加载
